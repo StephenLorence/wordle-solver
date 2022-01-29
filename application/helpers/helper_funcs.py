@@ -15,7 +15,11 @@ def generate_word_list(length, original_word_list):
     and filter that set to return only the words with a specified number
     of letters in them.
     """
-    return list(filter(lambda x: len(x) == length, original_word_list))
+
+    # Filter out periods ('.') first.
+    no_periods = filter(lambda x: '.' not in x, original_word_list)
+
+    return list(filter(lambda x: len(x) == length, no_periods))
 
 
 def validate_string_length(target, guess):
